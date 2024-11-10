@@ -1,3 +1,4 @@
+print('Constant scanner loaded')
 local TextService = game:GetService("TextService")
 
 local ConstantScanner = {}
