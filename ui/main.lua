@@ -24,7 +24,7 @@ xpcall(function()
 	ScriptScanner = import("ui/modules/ScriptScanner")
 	ModuleScanner = import("ui/modules/ModuleScanner")
 	UpvalueScanner = import("ui/modules/UpvalueScanner")
-	ConstantScanner = import("ui/modules/ConstantScanner")
+	--ConstantScanner = import("ui/modules/ConstantScanner")
 end, function(err)
 	local message
 	if err:find("valid member") then
