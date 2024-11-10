@@ -163,6 +163,7 @@ viewConstantsContext:SetCallback(function()
 
             temporaryConstants = {}
 
+            print(getConstants(closure.Data)    
             for i,v in pairs(getConstants(closure.Data)) do
                 if not closure.Constants[i] then
                     local constant = Constant.new(closure, i, v) 
