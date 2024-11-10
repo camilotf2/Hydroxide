@@ -273,7 +273,7 @@ function Log.new(hook)
 
     buttonInfo.Protos.Text = #getProtos(original)
     buttonInfo.Upvalues.Text = #getUpvalues(original)
-    buttonInfo.Constants.Text = #getConstants(original)
+    --buttonInfo.Constants.Text = #getConstants(original)
 
     button.Name = closure.Name
     buttonName.Text = closure.Name
