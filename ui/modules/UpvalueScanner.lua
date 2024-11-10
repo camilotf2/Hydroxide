@@ -1,3 +1,4 @@
+print('Upvalue scanner loaded')
 local RunService = game:GetService("RunService")
 local TextService = game:GetService("TextService")
 
