@@ -1,3 +1,4 @@
+print('Module scanner loaded')
 local ModuleScanner = {}
 local Methods = import("modules/ModuleScanner")
 
