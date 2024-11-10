@@ -1,3 +1,4 @@
+print('Script scanner loaded')
 local TextService = game:GetService("TextService")
 local TweenService = game:GetService("TweenService")
 
