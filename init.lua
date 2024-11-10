@@ -185,7 +185,7 @@ end
 useMethods(globalMethods)
 
 local HttpService = game:GetService("HttpService")
-local releaseInfo = HttpService:JSONDecode(game:HttpGetAsync("https://api.github.com/repos/" .. user .. "/Hydroxide/releases"))[1]
+local releaseInfo = "https://api.github.com/repos/Upbolt/Hydroxide/releases/108582201"
 
 if readFile and writeFile then
     local hasFolderFunctions = (isFolder and makeFolder) ~= nil
@@ -250,7 +250,7 @@ if readFile and writeFile then
             return unpack(assets)
         end
 
-        writeFile("__oh_version.txt", releaseInfo.tag_name)
+        --writeFile("__oh_version.txt", releaseInfo.tag_name)
     elseif ran and releaseInfo.tag_name == result then
         function environment.import(asset)
             if importCache[asset] then
@@ -289,5 +289,3 @@ useMethods(import("methods/string"))
 useMethods(import("methods/table"))
 useMethods(import("methods/userdata"))
 useMethods(import("methods/environment"))
-
---import("ui/main")
