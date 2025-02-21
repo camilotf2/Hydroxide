@@ -133,7 +133,7 @@ local function checkCurrentBlocked()
 end
 
 local Condition = {}
-function Condition.new(closure, status, index, value, type)
+--[[function Condition.new(closure, status, index, value, type)
     local condition = {}
     local instance = Assets.ConditionPod:Clone() 
     local content = instance.Content
@@ -851,6 +851,6 @@ Methods.SetEvent(function(hook, call)
     end
     
     setContext(oldContext)
-end)
+end)]]
 
 return ClosureSpy
