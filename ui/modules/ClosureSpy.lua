@@ -18,6 +18,8 @@ local ContextMenu, ContextMenuButton = import("ui/controls/ContextMenu")
 local Base = import("rbxassetid://11389137937").Base
 local Assets = import("rbxassetid://78370384618967").ClosureSpy
 
+print("big black nigg")
+
 local Prompts = Base.Prompts
 local Page = Base.Body.Pages.ClosureSpy
 

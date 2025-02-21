@@ -126,24 +126,31 @@ local function createConstant(index, value)
 end
 
 local function createEnvironment(index, value)
-    local instance = Assets.ProtoPod:Clone()
+    local instance = Assets.ConstantPod:Clone()
     local information = instance.Information
-    local functionName = getInfo(value).name or ''
-    local indexWidth = TextService:GetTextSize(index, 18, "SourceSans", constants.textWidth).X + 8
+    local valueType = type(value)
+    local indexWidth = TextService:GetTextSize(index, 18, "SourceSans", constants.textWidth).X + 8    
 
-    if functionName == '' then
-        functionName = "Unnamed function"
-        information.Label.TextColor3 = oh.Constants.Syntax["unnamed_function"]
-    end
-    
     information.Index.Text = index
-    information.Label.Text = functionName
 
     information.Index.Size = UDim2.new(0, indexWidth, 0, 20)
     information.Label.Size = UDim2.new(1, -(indexWidth + 20), 1, 0)
     information.Icon.Position = UDim2.new(0, indexWidth, 0, 2)
     information.Label.Position = UDim2.new(0, indexWidth + 20, 0, 0)
 
+    if valueType == "function" then
+        local functionName = getInfo(value).name or ''
+
+        if functionName == '' then
+            functionName = "Unnamed function"
+            information.Label.TextColor3 = oh.Constants.Syntax["unnamed_function"]
+        end
+        
+        information.Label.Text = functionName
+    else
+        information.Label.Text = toString(value)
+    end
+    
     ListButton.new(instance, enviromentList)
 end
 
