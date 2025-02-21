@@ -20,7 +20,7 @@ local MessageBox, MessageType = import("ui/controls/MessageBox")
 local ContextMenu, ContextMenuButton = import("ui/controls/ContextMenu")
 
 local Base = import("rbxassetid://11389137937").Base
-local Assets = import("rbxassetid://5042114982").UpvalueScanner
+local Assets = import("rbxassetid://78370384618967").UpvalueScanner
 
 local Prompts = Base.Prompts
 local Page = Base.Body.Pages.UpvalueScanner
