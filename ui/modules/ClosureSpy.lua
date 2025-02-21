@@ -18,7 +18,7 @@ local ContextMenu, ContextMenuButton = import("ui/controls/ContextMenu")
 local Base = import("rbxassetid://11389137937").Base
 local Assets = import("rbxassetid://78370384618967").ClosureSpy
 
-print("big black nigg")
+print(Assets)
 
 local Prompts = Base.Prompts
 local Page = Base.Body.Pages.ClosureSpy
@@ -157,13 +157,7 @@ function Condition.new(closure, status, index, value, type)
     condition.Remove = Condition.remove
 
     check:SetCallback(function()
-        condition.Enabled = not condition.Enabled
-        local argStatus = (condition.Status == "Ignore" and closure.IgnoredArgs[index]) or closure.BlockedArgs[index]
-        if value then
-            argStatus.values[value] = condition.Enabled or nil
-        else
-            argStatus.types[condition.Type] = condition.Enabled or nil
-        end
+        condition:Toggle()
     end)
 
     button:SetRightCallback(function()
