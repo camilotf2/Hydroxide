@@ -126,7 +126,7 @@ local function createConstant(index, value)
 end
 
 local function createEnvironment(index, value)
-    local instance = Assets.ConstantPod:Clone()
+    local instance = Assets.SenvPod:Clone()
     local information = instance.Information
     local valueType = type(value)
     local indexWidth = TextService:GetTextSize(index, 18, "SourceSans", constants.textWidth).X + 8    
