@@ -13,7 +13,7 @@ local MessageBox, MessageType = import("ui/controls/MessageBox")
 local ContextMenu, ContextMenuButton = import("ui/controls/ContextMenu")
 
 local Page = import("rbxassetid://11389137937").Base.Body.Pages.ScriptScanner
-local Assets = import("rbxassetid://5042114982").ScriptScanner
+local Assets = import("rbxassetid://78370384618967").ScriptScanner
 
 local ScriptList = Page.List
 local ScriptInfo = Page.Info
@@ -51,6 +51,7 @@ local ProtosResults = ProtosResultsClip.Content
 local scriptList = List.new(ListResults)
 local protosList = List.new(ProtosResults)
 local constantsList = List.new(ConstantsResults)
+local enviromentList = List.new(EnvironmentResults)
 
 local scriptLogs = {}
 local selected = {}
@@ -124,6 +125,28 @@ local function createConstant(index, value)
     ListButton.new(instance, constantsList)
 end
 
+local function createEnvironment(index, value)
+    local instance = Assets.ProtoPod:Clone()
+    local information = instance.Information
+    local functionName = getInfo(value).name or ''
+    local indexWidth = TextService:GetTextSize(index, 18, "SourceSans", constants.textWidth).X + 8
+
+    if functionName == '' then
+        functionName = "Unnamed function"
+        information.Label.TextColor3 = oh.Constants.Syntax["unnamed_function"]
+    end
+    
+    information.Index.Text = index
+    information.Label.Text = functionName
+
+    information.Index.Size = UDim2.new(0, indexWidth, 0, 20)
+    information.Label.Size = UDim2.new(1, -(indexWidth + 20), 1, 0)
+    information.Icon.Position = UDim2.new(0, indexWidth, 0, 2)
+    information.Label.Position = UDim2.new(0, indexWidth + 20, 0, 0)
+
+    ListButton.new(instance, enviromentList)
+end
+
 -- Log Object
 local Log = {}
 
@@ -143,6 +166,7 @@ function Log.new(localScript)
         if selected.scriptLog ~= log then
             protosList:Clear()
             constantsList:Clear()
+            enviromentList:Clear()
             
             ScriptList.Visible = false
             ScriptInfo.Visible = true
@@ -162,9 +186,9 @@ function Log.new(localScript)
                 createConstant(i, v)
             end
 
-            -- for i,v in pairs(localScript.Environment) do
-            --     createEnvironment(i, v)
-            -- end
+            for i,v in pairs(localScript.Environment) do
+                createEnvironment(i, v)
+            end
 
             -- script decompilation here
 
