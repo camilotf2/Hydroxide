@@ -18,6 +18,8 @@ local ContextMenu, ContextMenuButton = import("ui/controls/ContextMenu")
 local Base = import("rbxassetid://11389137937").Base
 local Assets = import("rbxassetid://78370384618967").ClosureSpy
 
+print(Assets)
+
 local Prompts = Base.Prompts
 local Page = Base.Body.Pages.ClosureSpy
 
@@ -82,10 +84,6 @@ local selected = {
     conditions = {}
 }
 
-local blacklist = {
-    
-}
-
 local conditionContext = ContextMenuButton.new("rbxassetid://4891633802", "Call Conditions")
 local clearContext = ContextMenuButton.new("rbxassetid://4892169181", "Clear Calls")
 local ignoreContext = ContextMenuButton.new("rbxassetid://4842578510", "Ignore Calls")
@@ -135,7 +133,7 @@ local function checkCurrentBlocked()
 end
 
 local Condition = {}
-function Condition.new(closure, status, index, value, type)
+--[[function Condition.new(closure, status, index, value, type)
     local condition = {}
     local instance = Assets.ConditionPod:Clone() 
     local content = instance.Content
@@ -429,8 +427,6 @@ function Log.adjust(log)
 
     local callWidth = TextService:GetTextSize(logInstance.Calls.Text, 18, "SourceSans", constants.textWidth).X + 10
     local labelWidth = callWidth + 21
-
-
 
     logInstance.Calls.Size = UDim2.new(0, callWidth, 0, 20)
     logIcon.Position = UDim2.new(0, callWidth, 0.5, -7)
@@ -845,32 +841,16 @@ conditionValueType:SetCallback(function(_dropdown, selected)
     icon.Border.Image = iconCondition
 end)
 
-local activeHooks = {} 
-
 Methods.SetEvent(function(hook, call)
-    if checkcaller() then
-        return
-    end 
-
-    if activeHooks[hook] then
-        return
-    end
-
-    activeHooks[hook] = true
-
     local oldContext = getContext()
     setContext(7)
 
     if not removed[hook] then
-        task.spawn(function()
-            local log = currentLogs[hook] or Log.new(hook)
-            log:IncrementCalls(call)
-        end)
+        local log = currentLogs[hook] or Log.new(hook)
+        log:IncrementCalls(call)
     end
-
+    
     setContext(oldContext)
-    activeHooks[hook] = nil
-end)
-
+end)]]
 
 return ClosureSpy
