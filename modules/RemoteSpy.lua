@@ -131,7 +131,7 @@ for _name, hook in pairs(methodHooks) do
             local remoteIgnored = remote.Ignored 
             local argsIgnored = remote:AreArgsIgnored(vargs)
             
-            if eventSet and (not remoteIgnored and not argsIgnored) then
+            if eventSet and checkcaller() and (not remoteIgnored and not argsIgnored) then
                 local call = {
                     script = getCallingScript((PROTOSMASHER_LOADED ~= nil and 2) or nil),
                     args = vargs,
