@@ -135,7 +135,7 @@ for _name, hook in pairs(methodHooks) do
                 local call = {
                     script = getCallingScript((PROTOSMASHER_LOADED ~= nil and 2) or nil),
                     args = vargs,
-                    func = getInfo(3).func
+                    func = getInfo(1).func
                 }
     
                 remote:IncrementCalls(call)
