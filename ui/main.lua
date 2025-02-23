@@ -17,7 +17,6 @@ local ScriptScanner
 local ModuleScanner
 local UpvalueScanner
 local ConstantScanner
-local Explorer
 
 xpcall(function()
 	RemoteSpy = import("ui/modules/RemoteSpy")
@@ -26,7 +25,6 @@ xpcall(function()
 	ModuleScanner = import("ui/modules/ModuleScanner")
 	UpvalueScanner = import("ui/modules/UpvalueScanner")
 	ConstantScanner = import("ui/modules/ConstantScanner")
-	Explorer = import("ui/modules/Explorer")
 end, function(err)
 	local message
 	if err:find("valid member") then
